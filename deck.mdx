@@ -1,0 +1,455 @@
+export { default as theme } from './src/index'
+import { Head } from 'mdx-deck'
+import nightOwl from 'prism-react-renderer/themes/nightOwl'
+import { CodeSurfer } from 'mdx-deck-code-surfer'
+import { Layout, Split, BGImage, Image } from './src/index'
+
+<Head>
+  <title>CSS IN JS</title>
+</Head>
+
+# 👋
+
+---
+
+# CSS IN JS
+
+---
+
+# Why Tho ?
+
+---
+
+export default Split
+
+<img src={require('file-loader!./images/yld.gif')} />
+
+- Developer Advocate at YLD
+- Really into shitty movies
+- Really into football
+
+---
+
+# Let's debunk some myths
+
+---
+
+# CSS in JS is a new trend
+
+---
+
+<img src={require('file-loader!./images/jsss.png')} />
+
+---
+
+# 1996
+
+## Before CSS
+
+---
+
+# You don't need to know CSS
+
+---
+
+## This one doesn't even make sense. I still write all the CSS.
+
+---
+
+# It's not real CSS
+
+---
+
+## What is real CSS tho ?
+
+---
+
+# It's inline styles
+
+---
+
+## MOST of CSS in JS libraries create classes.
+
+---
+
+# It feels wrong
+
+---
+
+## I feel you. You get used to it. We all got used to flexbox.
+
+---
+
+# It's slower then CSS
+
+---
+
+# Disclaimer
+
+## Its is. It's JS but we can SSR
+
+---
+
+# Let's talk about Why
+
+---
+
+# Conditionals in CSS
+
+## This is the dream to me
+
+---
+
+# Scoped selectors
+
+## No more polluting the global namespace
+
+---
+
+# Code Reuse
+
+## We can treat our code splitting in CSS like we do in JS
+
+---
+
+# Vendor Prefixing
+
+## Most CSS in JS libraries will give you this for free
+
+---
+
+# Change CSS based on Props
+
+## This is something always possible but using these libraries makes that your styles are aq function of your components
+
+---
+
+# You can literally do anything you want in CSS
+
+---
+
+# How?
+
+---
+
+# JSS
+
+---
+
+## JSS is a more powerful abstraction over CSS and uses JS to describe your styles-
+
+---
+
+<CodeSurfer
+  title="Install"
+  code={`
+    npm install jss jss-preset-default
+  `}
+  lang="bash"
+  theme={nightOwl}
+/>
+
+---
+
+# How?
+
+---
+
+<CodeSurfer
+  title="Install"
+  code={`
+    <section class="dope-section">
+        <button class="dope-button">Click me</button>
+    </section>
+`}
+  lang="markup"
+  theme={nightOwl}
+/>
+
+---
+
+<CodeSurfer
+  title="Get our elements"
+  code={`
+    const section = document.querySelector('.dope-section');
+    const button = document.querySelector('.dope-button');
+`}
+  lang="js"
+  theme={nightOwl}
+/>
+
+---
+
+<CodeSurfer
+  code={`
+import jss from 'jss'
+import preset from 'jss-preset-default'
+\n
+jss.setup(preset())
+const styles = {
+  button: {
+    fontSize: 12,
+    '&:hover': {
+      background: 'black'
+    }
+  },
+  section: {
+    padding: 20
+  }
+}
+`}
+  lang="js"
+  theme={nightOwl}
+/>
+
+---
+
+<CodeSurfer
+  code={`
+    const {classes} = jss.createStyleSheet(styles).attach()
+    section.classList.add(classes.section)
+    button.classList.add(classes.button)
+`}
+  lang="js"
+  theme={nightOwl}
+/>
+
+---
+
+# What about media queries?
+
+---
+
+<CodeSurfer
+  code={`
+const styles = {
+  button: {
+    fontSize: 12,
+    '&:hover': {
+      background: 'black'
+    }
+  },
+  '@media (min-width: 1024px)': {
+    button: {
+      width: 200
+    }
+  }
+}
+`}
+  lang="js"
+  theme={nightOwl}
+/>
+
+---
+
+# Keep track of our media queries:
+
+---
+
+<CodeSurfer
+  code={`
+// theme.js
+\n
+export const desktop = '@media (min-width: 1024px)';
+export const tablet = '@media (min-width: 767px)';
+export const mobile = '@media (min-width: 0px)';
+`}
+  lang="js"
+  theme={nightOwl}
+/>
+---
+
+<CodeSurfer
+  code={`
+const styles = {
+  button: {
+    fontSize: 12,
+    '&:hover': {
+      background: 'black'
+    }
+  },
+  desktop: {
+    button: {
+      fontSize: 14,
+    }
+  }
+}
+`}
+  lang="js"
+  theme={nightOwl}
+/>
+
+---
+
+# JSS is a very low level abstraction
+
+## It does help to see what most libraries do under the hood.
+
+---
+
+# Example
+
+## [https://codesandbox.io/s/ly8nrjwywz](https://codesandbox.io/s/ly8nrjwywz)
+
+---
+
+# React
+
+---
+
+# Emotion
+
+---
+
+<CodeSurfer
+  title="Install"
+  code={`
+    npm install emotion react-emotion
+  `}
+  lang="bash"
+  theme={nightOwl}
+/>
+
+---
+
+<CodeSurfer
+  title="Style Elements"
+  code={`
+import styled from 'react-emotion'
+\n
+const Button = styled('button')\`
+  background; #bada55;
+\`
+\n
+export default () => <Button>This is a badass button.</Button>
+`}
+  lang="bash"
+  theme={nightOwl}
+/>
+---
+
+<CodeSurfer
+  title="Media Queries"
+  code={`
+const Button = styled('button')\`
+  background; #bada55;
+\n
+  @media (min-width: 1024px) {
+    padding: 10px 20px;
+  }
+\`
+\n
+export default () => <Button>This is a badass button.</Button>
+`}
+  lang="bash"
+  theme={nightOwl}
+/>
+---
+
+<CodeSurfer
+  title="Props"
+  code={`
+const Button = styled('button')\`
+    color: \${props =>
+    props.primary ? 'red' : 'blue'};
+\`
+\n
+export default () => (
+  <Fragment>
+    <Button>This is a blue button.</Button>
+    <Button>This is a red button.</Button>
+  </Fragment>
+)
+`}
+  lang="bash"
+  theme={nightOwl}
+/>
+---
+
+<CodeSurfer
+  title="Global Styles"
+  code={`
+import { injectGlobal } from 'emotion'
+import reset from 'reset-css'
+\n
+injectGlobal\`
+  \${reset}
+  * {
+    box-sizing: border-box;
+  }
+\`
+`}
+  lang="bash"
+  theme={nightOwl}
+/>
+---
+
+<CodeSurfer
+  title="Animations"
+  code={`
+import styled, { keyframes } from 'react-emotion'
+\n
+const fade = keyframes\`
+  from {
+    opacity: 0,
+  }
+  to {
+    opacity: 1,
+  }
+\`
+const Section = styled('section')\`
+  animation: \${fade} 1s ease;
+\`
+`}
+  lang="bash"
+  theme={nightOwl}
+/>
+---
+
+# Readable Code
+
+---
+
+<CodeSurfer
+  lang="jsx"
+  theme={nightOwl}
+  code={`
+<WrapperRow>
+  <Col sm={12} xs={12} md={false}>
+    <SubHeading>Featured work</SubHeading>
+    <Padding bottom={{ mobile: 0, tablet: 3, desktop: 1 }}>
+      <H2 noTop>{caseStudy.title}</H2>
+    </Padding>
+  </Col>
+  <Col xs={false} sm={false} md={6}>
+    <Margin bottom={1}>
+      <H2 noTop>{caseStudy.title}</H2>
+    </Margin>
+    <Paragraph>
+      {caseStudy.intro}
+    </Paragraph>
+  </Col>
+  <ImageWrapper xs={12} sm={12} md={6}>
+      <Img alt={caseStudy.title} src={caseStudy.posterImage} />
+  </ImageWrapper>
+</WrapperRow>
+`}
+/>
+
+---
+
+# You don't need it for an amazing website
+
+---
+
+# But it's pretty good!
+
+---
+
+export default Layout
+
+<Image src={require('file-loader!./images/yay.jpg')} />
+
+# Thank You 🇬🇧
+
+### [https://css-in-js.now.sh/](https://css-in-js.now.sh/)
