@@ -1,7 +1,6 @@
 {
-  "name": "gql-all-things",
+  "name": "css-in-js",
   "version": "1.0.0",
-  "description": "React Native EU Talk",
   "main": "index.js",
   "scripts": {
     "start": "mdx-deck deck.mdx",
@@ -11,7 +10,7 @@
   },
   "author": "Sara Vieira",
   "now": {
-    "alias": "gql-all-things"
+    "alias": "css-in-js"
   },
   "license": "MIT",
   "devDependencies": {
