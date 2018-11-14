@@ -3,26 +3,25 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "now-start": "serve dist",
     "start": "mdx-deck deck.mdx",
     "build": "mdx-deck build deck.mdx --no-html",
     "format": "prettier --write '**/*.js'",
     "posttest": "npm run format"
   },
   "author": "Sara Vieira",
-  "now": {
-    "alias": "css-in-js"
-  },
   "license": "MIT",
   "devDependencies": {
     "file-loader": "^2.0.0",
-    "mdx-deck": "1.7.7",
-    "prettier": "^1.14.3",
+    "mdx-deck": "1.7.10",
+    "prettier": "^1.15.2",
     "raw-loader": "^0.5.1"
   },
   "dependencies": {
-    "mdx-deck-code-surfer": "^0.5.0",
-    "react": "^16.5.2",
-    "react-dom": "^16.5.2",
-    "styled-components": "^3.4.9"
+    "mdx-deck-code-surfer": "^0.5.3",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "serve": "^10.1.1",
+    "styled-components": "^4.1.1"
   }
 }
