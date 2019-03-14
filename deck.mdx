@@ -22,9 +22,9 @@ import { Layout, Split, BGImage, Image } from './src/index'
 
 export default Split
 
-<img src={require('file-loader!./images/yld.gif')} />
+<img src={require('file-loader!./images/codesandbox.png')} />
 
-- Developer Advocate at YLD
+- Developer @ CodeSandbox
 - Really into shitty movies
 - Really into football
 
@@ -208,7 +208,7 @@ const styles = {
 
 <CodeSurfer
   code={`
-    const {classes} = jss.createStyleSheet(styles).attach()
+    const { classes } = jss.createStyleSheet(styles).attach()
     section.classList.add(classes.section)
     button.classList.add(classes.button)
 `}
@@ -299,14 +299,14 @@ const styles = {
 
 ---
 
-# Emotion
+# Styled Components
 
 ---
 
 <CodeSurfer
   title="Install"
   code={`
-    npm install emotion react-emotion
+    npm install styled-components
   `}
   lang="bash"
   theme={nightOwl}
@@ -317,15 +317,32 @@ const styles = {
 <CodeSurfer
   title="Style Elements"
   code={`
-import styled from 'react-emotion'
+import styled from 'styled-components'
 \n
-const Button = styled('button')\`
+const Button = styled.button\`
   background; #bada55;
 \`
 \n
 export default () => <Button>This is a badass button.</Button>
 `}
-  lang="bash"
+  lang="jsx"
+  theme={nightOwl}
+/>
+---
+
+<CodeSurfer
+  title="Style Components"
+  code={`
+import styled from 'styled-components'
+import Button from './Button'
+\n
+const PrimaryButton = styled(Button)\`
+  background; #bada55;
+\`
+\n
+export default () => <PrimaryButton>This is a badass button.</PrimaryButton>
+`}
+  lang="jsx"
   theme={nightOwl}
 />
 ---
@@ -333,7 +350,7 @@ export default () => <Button>This is a badass button.</Button>
 <CodeSurfer
   title="Media Queries"
   code={`
-const Button = styled('button')\`
+const Button = styled.button\`
   background: #bada55;
 \n
   @media (min-width: 1024px) {
@@ -343,7 +360,7 @@ const Button = styled('button')\`
 \n
 export default () => <Button>This is a badass button.</Button>
 `}
-  lang="bash"
+  lang="jsx"
   theme={nightOwl}
 />
 ---
@@ -351,19 +368,19 @@ export default () => <Button>This is a badass button.</Button>
 <CodeSurfer
   title="Props"
   code={`
-const Button = styled('button')\`
+const Button = styled.button\`
     color: \${props =>
     props.primary ? 'red' : 'blue'};
 \`
 \n
 export default () => (
-  <Fragment>
+  <>
     <Button>This is a blue button.</Button>
     <Button primary>This is a red button.</Button>
-  </Fragment>
+  </>
 )
 `}
-  lang="bash"
+  lang="jsx"
   theme={nightOwl}
 />
 ---
@@ -371,13 +388,13 @@ export default () => (
 <CodeSurfer
   title="Global Styles"
   code={`
-import { injectGlobal } from 'emotion'
+import { createGlobalStyle } from 'styled-components'
 import reset from 'reset-css'
 \n
-injectGlobal\`
+const Global = createGlobalStyle\`
   \${reset}
-  * {
-    box-sizing: border-box;
+  body {
+    color: ${props => (props.whiteColor ? 'white' : 'black')};
   }
 \`
 `}
@@ -389,7 +406,7 @@ injectGlobal\`
 <CodeSurfer
   title="Animations"
   code={`
-import styled, { keyframes } from 'react-emotion'
+import styled, { keyframes } from 'styled-components'
 \n
 const fade = keyframes\`
   from {
@@ -399,11 +416,11 @@ const fade = keyframes\`
     opacity: 1,
   }
 \`
-const Section = styled('section')\`
+const Section = styled.section\`
   animation: \${fade} 1s ease;
 \`
 `}
-  lang="bash"
+  lang="jsx"
   theme={nightOwl}
 />
 ---
@@ -416,7 +433,7 @@ const Section = styled('section')\`
   lang="jsx"
   theme={nightOwl}
   code={`
-<WrapperRow>
+<Row>
   <Col sm={12} xs={12} md={false}>
     <SubHeading>Featured work</SubHeading>
     <Padding bottom={{ mobile: 0, tablet: 3, desktop: 1 }}>
@@ -434,7 +451,7 @@ const Section = styled('section')\`
   <ImageWrapper xs={12} sm={12} md={6}>
       <Img alt={caseStudy.title} src={caseStudy.posterImage} />
   </ImageWrapper>
-</WrapperRow>
+</Row>
 `}
 />
 
@@ -452,6 +469,6 @@ export default Layout
 
 <Image src={require('file-loader!./images/yay.jpg')} />
 
-# Thank You 🇬🇧
+# Thank You 🇳🇴
 
 ### [https:/css-in-js.netlify.com/](https:/css-in-js.netlify.com/)
